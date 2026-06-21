@@ -20,14 +20,14 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 - [x] AI Coding Agent configuration (`AGENTS.md`, `GEMINI.md`, `.gemini/` rules)
 
 ### Phase 2: Core Layout & Sections
-- [ ] Responsive Navigation / Header
+- [x] Responsive Navigation / Header
 - [ ] Hero Section (Introduction, Headline, CTA)
 - [ ] About Me & Experience Section (Skills, Timeline)
 - [ ] Projects Showcase (Cards, Filterable grid, GitHub links)
 - [ ] Contact Form / Footer (Social icons, Email contact)
 
 ### Phase 3: Enhancements & Interactive Features
-- [ ] Dark Mode / Theme Toggle (Tailwind v4 class-based or native preference)
+- [x] Dark Mode / Theme Toggle (Tailwind v4 class-based or native preference)
 - [ ] Premium Framer Motion or CSS Micro-animations
 - [ ] Image Optimization & custom loaders (using `sharp`)
 - [ ] SEO & Metadata configuration
@@ -47,3 +47,5 @@ All significant changes and feature updates vibe coded by the AI agent should be
   - Initialized local Git repository.
   - Created coding agent rule files (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.gemini/` configurations).
   - Added `ROADMAP.md` for cross-device progress tracking.
+  - Completed Task 1: Installed `next-themes` and `lucide-react`, configured Tailwind CSS v4 class-based dark mode, created `ThemeProvider` & layout header navigation with toggle button, and created typographic homepage.
+
