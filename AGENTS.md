@@ -72,3 +72,13 @@ Use the following commands to develop, test, and build the project:
   - `docs: ...` for documentation changes
 - **Workflow Step**: Make sure to check that the build (`pnpm run build`) succeeds before committing any changes.
 
+---
+
+## Progress & Feature Tracking
+
+- **Maintain Roadmap**: Whenever you implement a new feature, fix a bug, or add a configuration:
+  1. Update `ROADMAP.md` by checking off the completed task.
+  2. Add a short entry describing the change in the **Change Log & Progress Ledger** section of `ROADMAP.md`.
+  3. Ensure these updates are committed along with the code changes.
+
+

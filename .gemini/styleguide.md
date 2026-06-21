@@ -18,4 +18,6 @@ For the full detailed coding guidelines, please refer to the project's agent rul
 3. **Import Aliases**: Reference root/src components using the `@/*` alias (e.g., `@/components/Button`).
 4. **Code Quality**: Write clean, modern, and production-ready code. Keep component size minimal and avoid placeholders.
 5. **Git Auto-Commits**: After completing any vibe coding changes, tasks, or features, automatically stage and commit the changes using conventional commits (e.g. `feat: ...`, `fix: ...`, `chore: ...`). Ensure the project builds successfully before committing.
+6. **Maintain ROADMAP.md**: Whenever a feature is added or updated, check it off in `ROADMAP.md` and log a summary of the change in the **Change Log & Progress Ledger** section. Ensure the updated `ROADMAP.md` is committed alongside the code changes.
+
 

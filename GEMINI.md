@@ -20,4 +20,6 @@ For the full coding standards, architectural details, and project conventions, r
 - **Server/Client Boundary**: Default to React Server Components. Use `"use client"` only when interactive UI or hooks are required.
 - **Styling**: Use Tailwind CSS v4 utility classes.
 - **Git Auto-Commit**: Automatically stage and commit changes with conventional commits (`feat: ...`, `fix: ...`, etc.) after successfully completing a task (verify with `pnpm run build` first).
+- **Progress Tracking**: Always update and check off completed items in `ROADMAP.md`, and log the changes in the Change Log ledger before committing.
+
 
