@@ -59,4 +59,6 @@ All significant changes and feature updates vibe coded by the AI agent should be
   - Created coding agent rule files (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.gemini/` configurations).
   - Added `ROADMAP.md` for cross-device progress tracking.
   - Completed Task 1: Installed `next-themes` and `lucide-react`, configured Tailwind CSS v4 class-based dark mode, created `ThemeProvider` & layout header navigation with toggle button, and created typographic homepage.
+  - Updated layout metadata and icons configuration to use `favicon.png` from the public folder, and removed the default `favicon.ico`.
+
 
