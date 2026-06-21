@@ -47,6 +47,10 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 - [ ] **Editor Forms (`/admin/new` & `/admin/edit/[id]`):** Create standard input fields for Title, Description, Category, Cover Image URL, and hook up the custom TipTap component.
 - [ ] Write the respective Next.js Server Actions or API handlers to process database creating, updating, and deleting via Prisma.
 
+### TASK 7: CERTIFICATIONS MANAGEMENT (FUTURE FEATURE)
+- [ ] **Database Schema**: Add `Certification` model to `schema.prisma` with: id, name, issuer, issueDate, verificationUrl, credentialId.
+- [ ] **Portfolio Integration**: Render a clean, minimalist credentials section on the user-facing site.
+- [ ] **Admin Certification Panel**: Create a dedicated tab/form in the `/admin/dashboard` to add, update, or remove certifications via Server Actions.
 
 ---
 
@@ -60,5 +64,7 @@ All significant changes and feature updates vibe coded by the AI agent should be
   - Added `ROADMAP.md` for cross-device progress tracking.
   - Completed Task 1: Installed `next-themes` and `lucide-react`, configured Tailwind CSS v4 class-based dark mode, created `ThemeProvider` & layout header navigation with toggle button, and created typographic homepage.
   - Updated layout metadata and icons configuration to use `favicon.png` from the public folder, and removed the default `favicon.ico`.
+  - Added TASK 7: Certifications Management to the roadmap as a future feature plan.
+
 
 
