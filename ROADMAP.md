@@ -12,30 +12,41 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 
 ## 📋 Feature Checklist
 
-### Phase 1: Project Setup & Initialization
-- [x] Next.js 16 (App Router + Turbopack) Boilerplate
-- [x] TypeScript & ESLint configurations
-- [x] Tailwind CSS v4 Integration (PostCSS vanilla CSS entrypoint)
-- [x] Local Git repository initialization
-- [x] AI Coding Agent configuration (`AGENTS.md`, `GEMINI.md`, `.gemini/` rules)
+### TASK 1: INITIALIZATION & THEME CONFIGURATION
+- [x] Use the terminal to initialize a new Next.js project if one doesn't exist, using TypeScript, Tailwind CSS, and the App Router.
+- [x] Install `next-themes` and `lucide-react`.
+- [x] Configure class-based dark mode (`darkMode: 'class'`) using a clean Zinc palette (handled via `@custom-variant dark` in globals.css for Tailwind v4).
+- [x] Create a global layout file, a `ThemeProvider` component to eliminate layout flashes, and a minimalist Header component containing a functional Sun/Moon light/dark mode toggle.
 
-### Phase 2: Core Layout & Sections
-- [x] Responsive Navigation / Header
-- [ ] Hero Section (Introduction, Headline, CTA)
-- [ ] About Me & Experience Section (Skills, Timeline)
-- [ ] Projects Showcase (Cards, Filterable grid, GitHub links)
-- [ ] Contact Form / Footer (Social icons, Email contact)
+### TASK 2: DATABASE ARCHITECTURE (PRISMA & SUPABASE)
+- [ ] Install `prisma` and `@prisma/client`.
+- [ ] Generate a `schema.prisma` file with a `Post` model containing: id, title, slug, content (Text type for rich text), description, category (e.g., "Tutorial", "Dev Log"), coverImage (String nullable), published (Boolean), createdAt, and updatedAt.
+- [ ] Set up a database client instance file at `src/lib/prisma.ts`.
 
-### Phase 3: Enhancements & Interactive Features
-- [x] Dark Mode / Theme Toggle (Tailwind v4 class-based or native preference)
-- [ ] Premium Framer Motion or CSS Micro-animations
-- [ ] Image Optimization & custom loaders (using `sharp`)
-- [ ] SEO & Metadata configuration
+### TASK 3: USER-FACING PORTFOLIO & BLOG FRONTEND
+- [ ] **Home / Hero View:** Create a sleek, purely typographic layout with an introduction and simple navigation links.
+- [ ] **Projects View:** Design a clean, minimal 2-column list layout with subtle borders and small text tags for tech stacks.
+- [ ] **Blog Feed View:** Build a clean list that queries the database via Prisma to render published posts ordered by date (`Date — Title`) with a subtle category badge.
+- [ ] **Dynamic Post Page (`app/blog/[slug]/page.tsx`):**
+  - Implement fetching the post data by slug.
+  - Layout a crisp, wide featured cover image using `next/image` right below the header.
+  - Wrap the content body inside a container using `@tailwindcss/typography` (`prose prose-zinc dark:prose-invert max-w-none`) so the raw rich-text HTML displays beautifully.
 
-### Phase 4: Production & Deployment
-- [ ] Performance audit & optimization
-- [ ] Vercel/Netlify Deployment setup
-- [ ] Final build checks and domain mapping
+### TASK 4: DASHBOARD SECURITY (SUPABASE AUTH & MIDDLEWARE)
+- [ ] Install the necessary Supabase auth helper packages for Next.js.
+- [ ] Create a secure, minimalist Login route at `/login`.
+- [ ] Implement a Next.js Edge Middleware (`middleware.ts`) that intercepts paths directed at `/admin/*`. Ensure that any unauthenticated user or unauthorized email is immediately blocked and redirected to the home page.
+
+### TASK 5: NOTION-STYLE VISUAL EDITING CANVAS (TIPTAP)
+- [ ] Install `@tiptap/react`, `@tiptap/starter-kit`, `@tiptap/extension-image`, and `@tiptap/extension-link`.
+- [ ] Create a `RichTextEditor.tsx` component. Apply Tailwind typography styling directly inside the active editing canvas so my writing workspace looks identical to the final public blog page.
+- [ ] Build an elegant formatting toolbar (or a Medium-style floating bubble menu) supporting Bold, Italic, Code Blocks, Headings, and an Image URL insert.
+
+### TASK 6: MANAGEMENT WORKSPACE & DATA MUTATIONS
+- [ ] **Main Admin Page (`/admin/dashboard`):** Build a clean list layout of all existing entries with clear status badges showing "Draft" or "Published", along with a "Create New Post" link.
+- [ ] **Editor Forms (`/admin/new` & `/admin/edit/[id]`):** Create standard input fields for Title, Description, Category, Cover Image URL, and hook up the custom TipTap component.
+- [ ] Write the respective Next.js Server Actions or API handlers to process database creating, updating, and deleting via Prisma.
+
 
 ---
 
