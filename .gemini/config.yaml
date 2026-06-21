@@ -1,0 +1,12 @@
+# Gemini Code Assist Configuration
+# For more options, refer to Gemini documentation.
+
+styleguide:
+  path: "styleguide.md"
+
+reviews:
+  severity: "info"
+  ignore_patterns:
+    - "node_modules/**"
+    - ".next/**"
+    - "pnpm-lock.yaml"
