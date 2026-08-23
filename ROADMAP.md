@@ -24,8 +24,12 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 - [ ] Set up a database client instance file at `src/lib/prisma.ts`.
 
 ### TASK 3: USER-FACING PORTFOLIO & BLOG FRONTEND
-- [ ] **Home / Hero View:** Create a sleek, purely typographic layout with an introduction and simple navigation links.
-- [ ] **Projects View:** Design a clean, minimal 2-column list layout with subtle borders and small text tags for tech stacks.
+- [x] **Home / Hero View:** Create a sleek, modern developer hero layout with status badge, headline, subtitle, CTAs, and social links.
+- [x] **Projects View:** Design a clean, minimal 2-column/card grid layout highlighting 3 flagship projects with subtle borders, tech tags, technical highlights, and live/GitHub action links.
+- [x] **Experience & Background Timeline:** Build a vertical timeline covering Administrative Assistant (Procurement), Computer Programmer (Laravel), Full-Stack Specialization, and Part-Time IT Instructor.
+- [x] **Technical Skills:** Organize technical capabilities into 4 distinct badge grids (Frontend, Backend & APIs, Databases & Tools, Concepts).
+- [x] **Contact Section & Footer:** Add interactive contact form with clipboard email copy feature, mailto prefill, direct channel cards, and minimal footer with top scroll navigation.
+- [x] **Modular Data & Resume:** Store portfolio data in `@/data/portfolio.ts` and add sample `public/resume.pdf` for direct download link.
 - [ ] **Blog Feed View:** Build a clean list that queries the database via Prisma to render published posts ordered by date (`Date — Title`) with a subtle category badge.
 - [ ] **Dynamic Post Page (`app/blog/[slug]/page.tsx`):**
   - Implement fetching the post data by slug.
@@ -57,6 +61,12 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 ## 📈 Change Log & Progress Ledger
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
+- **2026-08-23**:
+  - Implemented modern, minimal, high-performance developer portfolio website for Alden Derf.
+  - Centralized portfolio data in `@/data/portfolio.ts` with full TypeScript interfaces for projects, experience timeline, skills, and profile metadata.
+  - Built modular React components: `Hero`, `Projects`, `Experience`, `Skills`, `Contact`, `ThemeToggle`, `Header`, and `Footer`.
+  - Configured class-based light/dark mode with `next-themes` and smooth CSS transitions.
+  - Added smooth section scrolling, mobile drawer navigation, direct resume PDF download, interactive contact form with clipboard copy, and social links.
 - **2026-06-21**:
   - Allowed `sharp` and `unrs-resolver` build scripts in `pnpm-workspace.yaml`.
   - Initialized local Git repository.

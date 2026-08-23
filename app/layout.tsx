@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "aldenderf | Portfolio",
-  description: "A minimalist personal developer portfolio & blog",
+  title: "Alden Derf | Full-Stack Developer & Systems Builder",
+  description:
+    "Developer Portfolio of Alden Derf - Specializing in TypeScript, Next.js, and scalable database architectures. Bridging enterprise operational workflows with modern web engineering.",
+  keywords: [
+    "Alden Derf",
+    "Full-Stack Developer",
+    "Systems Builder",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Laravel",
+    "PostgreSQL",
+    "Prisma",
+  ],
+  authors: [{ name: "Alden Derf" }],
   icons: {
     icon: "/favicon.png",
   },
@@ -33,7 +48,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-200">
+      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-200 selection:bg-zinc-200 dark:selection:bg-zinc-800">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -41,10 +56,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex-1 flex flex-col">{children}</main>
+          <main className="flex-1">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
