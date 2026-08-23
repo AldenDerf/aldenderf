@@ -62,8 +62,10 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
 - **2026-08-23**:
+  - Repositioned profile avatar to the top of the Hero section in a mobile-first column layout.
+  - Removed floating theme mode badge label from the avatar frame for a cleaner, minimalist aesthetic.
   - Added dual profile image feature with smooth light/dark mode cross-fade transition using `next-themes` and `Next.js Image`.
-  - Created [`components/profile-avatar.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/profile-avatar.tsx) with glassmorphism ring border, drop shadow, hover elevation, and theme status indicator.
+  - Created [`components/profile-avatar.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/profile-avatar.tsx) with glassmorphism ring border, drop shadow, and hover elevation.
   - Linked `public/profile/what shirt with white background.png` for Light Mode and `public/profile/Black shirt with shades.png` for Dark Mode.
   - Implemented modern, minimal, high-performance developer portfolio website for Alden Derf.
   - Centralized portfolio data in `@/data/portfolio.ts` with full TypeScript interfaces for projects, experience timeline, skills, and profile metadata.

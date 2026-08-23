@@ -21,7 +21,7 @@ export function ProfileAvatar() {
       <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 opacity-70 blur-md group-hover:opacity-100 transition duration-500" />
 
       {/* Main Avatar Container */}
-      <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-2xl overflow-hidden border-2 border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100 dark:bg-zinc-900 shadow-xl transition-transform duration-500 group-hover:scale-[1.02]">
+      <div className="relative h-32 w-32 sm:h-40 sm:w-40 md:h-44 md:w-44 rounded-2xl overflow-hidden border-2 border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]">
         {/* Light Mode Image */}
         <div
           className={`absolute inset-0 transition-all duration-700 ease-in-out ${
@@ -32,9 +32,9 @@ export function ProfileAvatar() {
         >
           <Image
             src={profileData.avatarLight}
-            alt={`${profileData.name} - Light Theme`}
+            alt={profileData.name}
             fill
-            sizes="(max-width: 768px) 192px, 256px"
+            sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
             className="object-cover object-center"
             priority
           />
@@ -50,9 +50,9 @@ export function ProfileAvatar() {
         >
           <Image
             src={profileData.avatarDark}
-            alt={`${profileData.name} - Dark Theme`}
+            alt={profileData.name}
             fill
-            sizes="(max-width: 768px) 192px, 256px"
+            sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
             className="object-cover object-center"
             priority
           />
@@ -60,11 +60,6 @@ export function ProfileAvatar() {
 
         {/* Subtle Overlay Shine */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
-
-      {/* Floating Mode Badge Indicator */}
-      <div className="absolute -bottom-2 -right-2 rounded-full border border-zinc-200 bg-white/90 px-2.5 py-0.5 text-[10px] font-mono font-semibold text-zinc-700 shadow-md backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300">
-        {mounted ? (isDark ? "Dark Mode" : "Light Mode") : "Theme"}
       </div>
     </div>
   );
