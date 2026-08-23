@@ -37,6 +37,8 @@ export interface ProfileInfo {
   github: string;
   linkedin: string;
   resumeUrl: string;
+  avatarLight: string;
+  avatarDark: string;
   bio: string[];
 }
 
@@ -52,6 +54,8 @@ export const profileData: ProfileInfo = {
   github: "https://github.com/aldenderf",
   linkedin: "https://linkedin.com/in/aldenderf",
   resumeUrl: "/resume.pdf",
+  avatarLight: "/profile/what%20shirt%20with%20white%20background.png",
+  avatarDark: "/profile/Black%20shirt%20with%20shades.png",
   bio: [
     "I am a software engineer focused on building resilient, high-performance web applications and backend systems.",
     "With a background combining enterprise administrative workflows, hospital system development, and modern full-stack web technologies, I engineer applications that solve real operational bottlenecks.",
