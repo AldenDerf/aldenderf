@@ -1,7 +1,11 @@
-import { experienceData } from "@/data/portfolio";
+import { ExperienceItem, experienceData } from "@/data/portfolio";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
 
-export function Experience() {
+interface ExperienceProps {
+  items?: ExperienceItem[];
+}
+
+export function Experience({ items = experienceData }: ExperienceProps) {
   return (
     <section id="experience" className="py-16 sm:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -21,7 +25,7 @@ export function Experience() {
 
         {/* Vertical Timeline Container */}
         <div className="relative border-l border-zinc-200 dark:border-zinc-800 ml-3 sm:ml-4 space-y-10">
-          {experienceData.map((item) => (
+          {items.map((item) => (
             <div key={item.id} className="relative pl-6 sm:pl-8 group">
               {/* Timeline Marker Dot */}
               <div className="absolute -left-[6.5px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-zinc-400 dark:border-zinc-950 dark:bg-zinc-600 group-hover:bg-zinc-900 dark:group-hover:bg-zinc-200 group-hover:scale-125 transition-all" />
@@ -50,30 +54,36 @@ export function Experience() {
                 </div>
 
                 {/* Description */}
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
 
                 {/* Bullet Points */}
-                <ul className="mt-3 space-y-1.5 list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
-                  {item.highlights.map((highlight, idx) => (
-                    <li key={idx} className="leading-relaxed">
-                      <span className="text-zinc-700 dark:text-zinc-300">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul className="mt-3 space-y-1.5 list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
+                    {item.highlights.map((highlight, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        <span className="text-zinc-700 dark:text-zinc-300">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {/* Skill Badges */}
-                <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/60">
-                  {item.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="inline-flex items-center rounded-sm bg-zinc-100 px-2 py-0.5 text-xs font-mono font-medium text-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-400"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                {item.skills && item.skills.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/60">
+                    {item.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="inline-flex items-center rounded-sm bg-zinc-100 px-2 py-0.5 text-xs font-mono font-medium text-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-400"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}

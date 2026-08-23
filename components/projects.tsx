@@ -1,8 +1,12 @@
-import { projectsData } from "@/data/portfolio";
+import { Project, projectsData } from "@/data/portfolio";
 import { GithubIcon } from "@/components/icons";
 import { ExternalLink, CheckCircle2, Code2 } from "lucide-react";
 
-export function Projects() {
+interface ProjectsProps {
+  items?: Project[];
+}
+
+export function Projects({ items = projectsData }: ProjectsProps) {
   return (
     <section id="projects" className="py-16 sm:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -22,7 +26,7 @@ export function Projects() {
 
         {/* Project Cards Grid */}
         <div className="grid grid-cols-1 gap-8">
-          {projectsData.map((project) => (
+          {items.map((project) => (
             <div
               key={project.id}
               className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/50 hover:border-zinc-400 dark:hover:border-zinc-700 transition-all shadow-xs"
@@ -68,31 +72,35 @@ export function Projects() {
               </p>
 
               {/* Highlights Bullet List */}
-              <div className="mt-5 space-y-2">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">
-                  Technical Highlights:
-                </h4>
-                <ul className="grid grid-cols-1 gap-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                  {project.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {project.highlights && project.highlights.length > 0 && (
+                <div className="mt-5 space-y-2">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">
+                    Technical Highlights:
+                  </h4>
+                  <ul className="grid grid-cols-1 gap-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+                    {project.highlights.map((highlight, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* Tech Stack Tags */}
-              <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center rounded-md border border-zinc-200 bg-zinc-100/70 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-800/60 dark:text-zinc-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              {project.techStack && project.techStack.length > 0 && (
+                <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="inline-flex items-center rounded-md border border-zinc-200 bg-zinc-100/70 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-800/60 dark:text-zinc-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

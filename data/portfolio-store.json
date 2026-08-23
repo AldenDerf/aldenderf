@@ -1,0 +1,285 @@
+{
+  "profile": {
+    "name": "Alden Derf",
+    "title": "Full-Stack Developer & Systems Builder",
+    "headline": "Full-Stack Developer & Systems Builder",
+    "subtitle": "Specializing in TypeScript, Next.js, and scalable database architectures. Bridging enterprise operational workflows with modern web engineering.",
+    "statusBadge": "Available for Full-Time Roles",
+    "isAvailable": true,
+    "email": "aldenderfc.fabro99@gmail.com",
+    "github": "https://github.com/aldenderf",
+    "linkedin": "https://linkedin.com/in/aldenderf",
+    "resumeUrl": "/resume.pdf",
+    "avatarLight": "/profile/what%20shirt%20with%20white%20background.png",
+    "avatarDark": "/profile/Black%20shirt%20with%20shades.png",
+    "bio": [
+      "I am a software engineer focused on building resilient, high-performance web applications and backend systems.",
+      "With a background combining enterprise administrative workflows, hospital system development, and modern full-stack web technologies, I engineer applications that solve real operational bottlenecks."
+    ]
+  },
+  "projects": [
+    {
+      "id": "medicare-hospital-system",
+      "title": "Enterprise Health Management System",
+      "description": "A robust web-based hospital administration platform built to manage patient admissions, clinical records, and department workflows seamlessly with zero downtime. Optimized data queries and structured strict access controls to serve multi-department medical staff.",
+      "techStack": [
+        "Next.js",
+        "TypeScript",
+        "Laravel",
+        "MySQL",
+        "Prisma",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "Role-Based Access Control (RBAC): Implemented granular user permissions for doctors, nurses, and administrative staff.",
+        "Schema & Query Optimization: Architected normalized database schemas reducing patient lookup latency by 45%.",
+        "API Integration: Developed secure REST APIs with automated validation middleware for clinical data compliance."
+      ],
+      "liveUrl": "https://demo.aldenderf.dev/hospital",
+      "githubUrl": "https://github.com/aldenderf/hospital-system",
+      "featured": true
+    },
+    {
+      "id": "procure-track-enterprise",
+      "title": "ProcureTrack Enterprise Portal",
+      "description": "An automated procurement lifecycle management application streamlining purchase requisitions, vendor approvals, and audit reporting for enterprise operations. Replaced manual spreadsheets with real-time status tracking and automated workflow triggers.",
+      "techStack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "Supabase"
+      ],
+      "highlights": [
+        "Enterprise Workflow Automation: Automated multi-stage approval pipelines adhering to corporate data compliance.",
+        "Complex Schema Design: Built audit-proof data relations tracking inventory balances and vendor compliance metrics.",
+        "Optimized Server Actions: Leveraged Next.js Server Actions for fast server-side processing and instant UI revalidation."
+      ],
+      "liveUrl": "https://demo.aldenderf.dev/procuretrack",
+      "githubUrl": "https://github.com/aldenderf/procure-track",
+      "featured": true
+    },
+    {
+      "id": "dev-hub-platform",
+      "title": "DevHub Developer Workspace & Portfolio Engine",
+      "description": "A high-performance developer content and portfolio platform featuring server-rendered dynamic feeds, markdown content engine, and real-time dashboard analytics. Built with clean architecture principles for maximum scannability and speed.",
+      "techStack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Lucide React"
+      ],
+      "highlights": [
+        "Sub-100ms Page Loads: Optimized SSR/ISR rendering pipeline with zero render-blocking client javascript bottlenecks.",
+        "Modular Architecture: Decoupled data contracts from UI presentation layer enabling effortless content updates.",
+        "Responsive Dark/Light System: Seamless theme context integration with zero layout flash and high contrast readability."
+      ],
+      "liveUrl": "https://aldenderf.dev",
+      "githubUrl": "https://github.com/aldenderf/aldenderf-portfolio",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "id": "part-time-it-instructor",
+      "role": "Part-Time IT Instructor",
+      "company": "Higher Education / Technical Institute",
+      "location": "On-Site / Hybrid",
+      "period": "2024 – Present",
+      "description": "Delivering core computer science and web development curriculum while mentoring students in software development practices.",
+      "highlights": [
+        "Instructed courses on Web Development, Relational Database Systems, and Object-Oriented Programming principles.",
+        "Mentored student teams through capstone projects, enforcing git workflow, clean code standards, and code reviews.",
+        "Created practical lab assignments simulating real-world full-stack development scenarios."
+      ],
+      "skills": [
+        "TypeScript",
+        "React",
+        "SQL",
+        "Git",
+        "System Architecture",
+        "Mentorship"
+      ]
+    },
+    {
+      "id": "full-stack-mern-specialization",
+      "role": "Full-Stack / MERN & Next.js Specialization",
+      "company": "Advanced Software Engineering Program",
+      "location": "Remote",
+      "period": "2023 – 2024",
+      "description": "Intensive specialization in modern JavaScript/TypeScript ecosystems, cloud database architectures, and Next.js full-stack development.",
+      "highlights": [
+        "Built multiple full-stack applications with Next.js App Router, React Server Components, and Tailwind CSS.",
+        "Implemented OAuth, JWT, and session authentication alongside Supabase and PostgreSQL database integrations.",
+        "Mastered containerized development workflows using Docker and automated deployment pipelines."
+      ],
+      "skills": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Prisma",
+        "Docker"
+      ]
+    },
+    {
+      "id": "computer-programmer-laravel",
+      "role": "Computer Programmer (Laravel / PHP)",
+      "company": "Healthcare Organization",
+      "location": "On-Site",
+      "period": "2021 – 2023",
+      "description": "Engineered and maintained hospital management systems, internal data tools, and clinical information software.",
+      "highlights": [
+        "Developed hospital module endpoints using Laravel MVC framework and MySQL relational databases.",
+        "Implemented security controls and access permissions for sensitive healthcare patient records.",
+        "Refactored legacy database queries, improving reporting speed by 40% across administrative departments."
+      ],
+      "skills": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "REST APIs",
+        "MVC",
+        "System Optimization"
+      ]
+    },
+    {
+      "id": "administrative-assistant-procurement",
+      "role": "Administrative Assistant (Procurement)",
+      "company": "Enterprise Operations Division",
+      "location": "On-Site",
+      "period": "2019 – 2021",
+      "description": "Managed enterprise procurement lifecycles, vendor compliance checks, data accuracy, and operational logistics.",
+      "highlights": [
+        "Oversewed end-to-end purchasing pipelines, requisition approvals, and inventory auditing processes.",
+        "Ensured strict data compliance and protocol adherence across multi-department procurement records.",
+        "Identified process bottlenecks and established structured data tracking tools to optimize operational turnaround time."
+      ],
+      "skills": [
+        "Enterprise Workflows",
+        "Procurement Lifecycle",
+        "Data Compliance",
+        "Process Optimization"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Frontend",
+      "description": "Building responsive, modern, and accessible user interfaces.",
+      "skills": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "HTML5/CSS3"
+      ]
+    },
+    {
+      "title": "Backend & APIs",
+      "description": "Designing reliable server systems and API endpoints.",
+      "skills": [
+        "Node.js",
+        "Laravel / PHP",
+        "Express",
+        "REST APIs",
+        "Server Actions"
+      ]
+    },
+    {
+      "title": "Databases & Tools",
+      "description": "Managing data storage, ORMs, and developer tooling.",
+      "skills": [
+        "PostgreSQL",
+        "MySQL",
+        "Prisma ORM",
+        "Supabase",
+        "Git / GitHub",
+        "Docker"
+      ]
+    },
+    {
+      "title": "Concepts",
+      "description": "Core architectural principles and operational engineering.",
+      "skills": [
+        "RBAC",
+        "Database Schema Design",
+        "Enterprise Workflows",
+        "System Architecture"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "meta-frontend-specialist",
+      "name": "Meta Front-End & React Engineering Specialization",
+      "issuer": "Meta",
+      "issueDate": "2024",
+      "credentialId": "META-FE-982401",
+      "verificationUrl": "https://coursera.org/verify/specialization/meta-frontend",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Advanced JavaScript",
+        "Web Accessibility",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "laravel-certified-developer",
+      "name": "Laravel Certified Web Application Developer",
+      "issuer": "Laravel Certification Authority",
+      "issueDate": "2023",
+      "credentialId": "LARA-CERT-88412",
+      "verificationUrl": "https://laravel.com/certification",
+      "skills": [
+        "Laravel",
+        "PHP",
+        "MySQL Schema Design",
+        "MVC Architecture",
+        "REST Security"
+      ]
+    },
+    {
+      "id": "full-stack-systems-engineering",
+      "name": "Full-Stack Software Engineering & Database Systems",
+      "issuer": "Software Engineering Academy",
+      "issueDate": "2023",
+      "credentialId": "FSE-DB-77192",
+      "verificationUrl": "https://freecodecamp.org/certification/aldenderf/full-stack",
+      "skills": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Prisma ORM",
+        "Docker"
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "url": "https://github.com/aldenderf",
+      "icon": "github",
+      "enabled": true
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/aldenderf",
+      "icon": "linkedin",
+      "enabled": true
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "url": "mailto:aldenderf@example.com",
+      "icon": "mail",
+      "enabled": true
+    }
+  ]
+}

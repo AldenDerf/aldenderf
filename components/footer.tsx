@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { profileData } from "@/data/portfolio";
-import { ArrowUp, Terminal } from "lucide-react";
+import { ProfileInfo, profileData } from "@/data/portfolio";
+import { ArrowUp, Terminal, Settings } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+  profile?: ProfileInfo;
+}
+
+export function Footer({ profile = profileData }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -19,12 +23,12 @@ export function Footer() {
               <Terminal className="h-3.5 w-3.5 text-zinc-700 dark:text-zinc-300" />
             </div>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              © {new Date().getFullYear()} {profileData.name}. Built with Next.js, TypeScript & Tailwind CSS.
+              © {new Date().getFullYear()} {profile.name}. Built with Next.js, TypeScript & Tailwind CSS.
             </p>
           </div>
 
           {/* Quick Nav Links & Back to Top */}
-          <div className="flex items-center gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+          <div className="flex flex-wrap items-center gap-6 text-xs text-zinc-500 dark:text-zinc-400">
             <Link href="#about" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
               About
             </Link>
@@ -42,6 +46,10 @@ export function Footer() {
             </Link>
             <Link href="#contact" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
               Contact
+            </Link>
+            <Link href="/admin" className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+              <Settings className="h-3 w-3" />
+              <span>Admin</span>
             </Link>
 
             <button

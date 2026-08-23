@@ -240,3 +240,55 @@ export const certificationsData: Certification[] = [
     skills: ["Next.js", "Node.js", "PostgreSQL", "Prisma ORM", "Docker"],
   },
 ];
+
+export interface SocialChannel {
+  id: string;
+  name: string;
+  url: string;
+  icon: string; // e.g. "github", "linkedin", "mail", "twitter", "youtube", "telegram", "discord", "globe"
+  enabled: boolean;
+}
+
+
+export const channelsData: SocialChannel[] = [
+  {
+    id: "github",
+    name: "GitHub",
+    url: "https://github.com/aldenderf",
+    icon: "github",
+    enabled: true,
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/aldenderf",
+    icon: "linkedin",
+    enabled: true,
+  },
+  {
+    id: "email",
+    name: "Email",
+    url: "mailto:aldenderf@example.com",
+    icon: "mail",
+    enabled: true,
+  },
+];
+
+export interface PortfolioData {
+  profile: ProfileInfo;
+  projects: Project[];
+  experience: ExperienceItem[];
+  skills: SkillCategory[];
+  certifications: Certification[];
+  channels: SocialChannel[];
+}
+
+export const initialPortfolioData: PortfolioData = {
+  profile: profileData,
+  projects: projectsData,
+  experience: experienceData,
+  skills: skillsData,
+  certifications: certificationsData,
+  channels: channelsData,
+};
+

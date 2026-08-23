@@ -1,7 +1,11 @@
-import { skillsData } from "@/data/portfolio";
+import { SkillCategory, skillsData } from "@/data/portfolio";
 import { Cpu, Layout, Server, Database, Layers } from "lucide-react";
 
-export function Skills() {
+interface SkillsProps {
+  categories?: SkillCategory[];
+}
+
+export function Skills({ categories = skillsData }: SkillsProps) {
   const getCategoryIcon = (title: string) => {
     switch (title.toLowerCase()) {
       case "frontend":
@@ -32,9 +36,9 @@ export function Skills() {
           </p>
         </div>
 
-        {/* 4 Category Grids */}
+        {/* Category Grids */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillsData.map((category) => (
+          {categories.map((category) => (
             <div
               key={category.title}
               className="flex flex-col rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-2xs"
@@ -47,9 +51,11 @@ export function Skills() {
                 </h3>
               </div>
 
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">
-                {category.description}
-              </p>
+              {category.description && (
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">
+                  {category.description}
+                </p>
+              )}
 
               {/* Skills Badge Chips */}
               <div className="flex flex-wrap gap-2 mt-auto pt-2">

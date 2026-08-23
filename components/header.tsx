@@ -3,10 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profileData } from "@/data/portfolio";
-import { Download, Menu, X, Terminal } from "lucide-react";
+import { ProfileInfo, profileData } from "@/data/portfolio";
+import { Download, Menu, X, Terminal, Settings } from "lucide-react";
 
-export function Header() {
+interface HeaderProps {
+  profile?: ProfileInfo;
+}
+
+export function Header({ profile = profileData }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -29,7 +33,7 @@ export function Header() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-mono text-sm">
             <Terminal className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
           </div>
-          <span>{profileData.name}</span>
+          <span>{profile.name}</span>
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -43,12 +47,19 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/admin"
+            className="inline-flex items-center gap-1 text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+          >
+            <Settings className="h-3.5 w-3.5" />
+            <span>Admin</span>
+          </Link>
         </nav>
 
         {/* Actions (Resume & Theme Toggle) */}
         <div className="flex items-center gap-3">
           <a
-            href={profileData.resumeUrl}
+            href={profile.resumeUrl}
             download="Alden_Derf_Resume.pdf"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-semibold text-zinc-800 hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 transition-colors cursor-pointer"
             aria-label="Download Resume"
@@ -84,8 +95,17 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 py-1"
+            >
+              <Settings className="h-4 w-4" />
+              <span>Admin Studio</span>
+            </Link>
+
             <a
-              href={profileData.resumeUrl}
+              href={profile.resumeUrl}
               download="Alden_Derf_Resume.pdf"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100 py-2 text-xs font-semibold text-zinc-800 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"

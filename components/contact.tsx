@@ -1,11 +1,28 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { profileData } from "@/data/portfolio";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
-import { Mail, Send, CheckCircle2, Copy, Check } from "lucide-react";
+import { ProfileInfo, SocialChannel, profileData, channelsData } from "@/data/portfolio";
+import { GithubIcon, LinkedinIcon, YoutubeIcon, TwitterIcon } from "@/components/icons";
+import {
+  Mail,
+  Send,
+  CheckCircle2,
+  Copy,
+  Check,
+  Globe,
+  MessageSquare,
+  Phone,
+} from "lucide-react";
 
-export function Contact() {
+interface ContactProps {
+  profile?: ProfileInfo;
+  channels?: SocialChannel[];
+}
+
+export function Contact({
+  profile = profileData,
+  channels = channelsData,
+}: ContactProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,22 +32,48 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
+  const activeChannels = channels.filter((c) => c.enabled);
+
+  const renderIcon = (iconKey: string) => {
+    switch (iconKey.toLowerCase()) {
+      case "github":
+        return <GithubIcon className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />;
+      case "linkedin":
+        return <LinkedinIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />;
+      case "mail":
+        return <Mail className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />;
+      case "twitter":
+        return <TwitterIcon className="h-4 w-4 text-sky-500" />;
+      case "youtube":
+        return <YoutubeIcon className="h-4 w-4 text-red-500" />;
+      case "telegram":
+        return <Send className="h-4 w-4 text-sky-400" />;
+      case "discord":
+        return <MessageSquare className="h-4 w-4 text-indigo-400" />;
+      case "phone":
+        return <Phone className="h-4 w-4 text-green-500" />;
+      default:
+        return <Globe className="h-4 w-4 text-purple-400" />;
+    }
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
-    // Trigger direct mailto prefilled fallback as well
-    const mailtoSubject = encodeURIComponent(formData.subject || `Portfolio Inquiry from ${formData.name}`);
+    const mailtoSubject = encodeURIComponent(
+      formData.subject || `Portfolio Inquiry from ${formData.name}`
+    );
     const mailtoBody = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    window.location.href = `mailto:${profileData.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.location.href = `mailto:${profile.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     setSubmitted(true);
   };
 
   const copyEmailToClipboard = () => {
-    navigator.clipboard.writeText(profileData.email);
+    navigator.clipboard.writeText(profile.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
@@ -45,8 +88,9 @@ export function Contact() {
             <span>Get in Touch</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Let's Build Together
+            Let&apos;s Build Together
           </h2>
+
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
             Whether you are looking for a full-time Full-Stack Developer, need assistance with enterprise system workflows, or want to discuss technical architecture—feel free to reach out.
           </p>
@@ -67,7 +111,7 @@ export function Contact() {
                 </span>
                 <div className="flex items-center justify-between gap-2 rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900">
                   <span className="text-xs sm:text-sm font-mono text-zinc-800 dark:text-zinc-200 truncate">
-                    {profileData.email}
+                    {profile.email}
                   </span>
                   <button
                     onClick={copyEmailToClipboard}
@@ -85,42 +129,21 @@ export function Contact() {
 
               {/* Quick Action Link Buttons */}
               <div className="flex flex-col gap-3 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
-                <a
-                  href={`mailto:${profileData.email}`}
-                  className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-zinc-500" />
-                    <span>Send Direct Email</span>
-                  </div>
-                  <span className="text-xs text-zinc-400">→</span>
-                </a>
-
-                <a
-                  href={profileData.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <LinkedinIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                    <span>LinkedIn Profile</span>
-                  </div>
-                  <span className="text-xs text-zinc-400">→</span>
-                </a>
-
-                <a
-                  href={profileData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <GithubIcon className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
-                    <span>GitHub Repositories</span>
-                  </div>
-                  <span className="text-xs text-zinc-400">→</span>
-                </a>
+                {activeChannels.map((channel) => (
+                  <a
+                    key={channel.id}
+                    href={channel.url}
+                    target={channel.url.startsWith("mailto:") ? "_self" : "_blank"}
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      {renderIcon(channel.icon)}
+                      <span>{channel.name}</span>
+                    </div>
+                    <span className="text-xs text-zinc-400">→</span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -141,8 +164,9 @@ export function Contact() {
                     Message Prepared!
                   </h4>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-md">
-                    Thank you, {formData.name}. Your email client should open automatically. If it didn't, feel free to contact me directly at <span className="font-mono text-zinc-800 dark:text-zinc-200">{profileData.email}</span>.
+                    Thank you, {formData.name}. Your email client should open automatically. If it didn&apos;t, feel free to contact me directly at <span className="font-mono text-zinc-800 dark:text-zinc-200">{profile.email}</span>.
                   </p>
+
                   <button
                     onClick={() => setSubmitted(false)}
                     className="mt-4 text-xs font-semibold text-zinc-600 dark:text-zinc-400 underline hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer"

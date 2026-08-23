@@ -1,7 +1,11 @@
-import { certificationsData } from "@/data/portfolio";
+import { Certification, certificationsData } from "@/data/portfolio";
 import { Award, ExternalLink, ShieldCheck, Calendar, Hash } from "lucide-react";
 
-export function Certifications() {
+interface CertificationsProps {
+  items?: Certification[];
+}
+
+export function Certifications({ items = certificationsData }: CertificationsProps) {
   return (
     <section id="certifications" className="py-16 sm:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -21,7 +25,7 @@ export function Certifications() {
 
         {/* Certifications Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {certificationsData.map((cert) => (
+          {items.map((cert) => (
             <div
               key={cert.id}
               className="flex flex-col rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-2xs group"

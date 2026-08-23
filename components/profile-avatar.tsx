@@ -1,17 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { profileData } from "@/data/portfolio";
 
-export function ProfileAvatar() {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+interface ProfileAvatarProps {
+  avatarLight?: string;
+  avatarDark?: string;
+  name?: string;
+}
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+const emptySubscribe = () => () => {};
+
+export function ProfileAvatar({
+  avatarLight = profileData.avatarLight,
+  avatarDark = profileData.avatarDark,
+  name = profileData.name,
+}: ProfileAvatarProps) {
+  const { resolvedTheme } = useTheme();
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const isDark = mounted ? resolvedTheme === "dark" : false;
 
@@ -31,8 +43,8 @@ export function ProfileAvatar() {
           }`}
         >
           <Image
-            src={profileData.avatarLight}
-            alt={profileData.name}
+            src={avatarLight}
+            alt={name}
             fill
             sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
             className="object-cover object-center"
@@ -49,8 +61,8 @@ export function ProfileAvatar() {
           }`}
         >
           <Image
-            src={profileData.avatarDark}
-            alt={profileData.name}
+            src={avatarDark}
+            alt={name}
             fill
             sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
             className="object-cover object-center"
