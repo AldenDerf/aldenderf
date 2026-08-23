@@ -200,3 +200,43 @@ export const skillsData: SkillCategory[] = [
     ],
   },
 ];
+
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  credentialId?: string;
+  verificationUrl?: string;
+  skills?: string[];
+}
+
+export const certificationsData: Certification[] = [
+  {
+    id: "meta-frontend-specialist",
+    name: "Meta Front-End & React Engineering Specialization",
+    issuer: "Meta",
+    issueDate: "2024",
+    credentialId: "META-FE-982401",
+    verificationUrl: "https://coursera.org/verify/specialization/meta-frontend",
+    skills: ["React", "TypeScript", "Advanced JavaScript", "Web Accessibility", "REST APIs"],
+  },
+  {
+    id: "laravel-certified-developer",
+    name: "Laravel Certified Web Application Developer",
+    issuer: "Laravel Certification Authority",
+    issueDate: "2023",
+    credentialId: "LARA-CERT-88412",
+    verificationUrl: "https://laravel.com/certification",
+    skills: ["Laravel", "PHP", "MySQL Schema Design", "MVC Architecture", "REST Security"],
+  },
+  {
+    id: "full-stack-systems-engineering",
+    name: "Full-Stack Software Engineering & Database Systems",
+    issuer: "Software Engineering Academy",
+    issueDate: "2023",
+    credentialId: "FSE-DB-77192",
+    verificationUrl: "https://freecodecamp.org/certification/aldenderf/full-stack",
+    skills: ["Next.js", "Node.js", "PostgreSQL", "Prisma ORM", "Docker"],
+  },
+];

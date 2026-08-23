@@ -51,9 +51,9 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 - [ ] **Editor Forms (`/admin/new` & `/admin/edit/[id]`):** Create standard input fields for Title, Description, Category, Cover Image URL, and hook up the custom TipTap component.
 - [ ] Write the respective Next.js Server Actions or API handlers to process database creating, updating, and deleting via Prisma.
 
-### TASK 7: CERTIFICATIONS MANAGEMENT (FUTURE FEATURE)
+### TASK 7: CERTIFICATIONS MANAGEMENT
 - [ ] **Database Schema**: Add `Certification` model to `schema.prisma` with: id, name, issuer, issueDate, verificationUrl, credentialId.
-- [ ] **Portfolio Integration**: Render a clean, minimalist credentials section on the user-facing site.
+- [x] **Portfolio Integration**: Render a clean, minimalist credentials section on the user-facing site (`components/certifications.tsx`).
 - [ ] **Admin Certification Panel**: Create a dedicated tab/form in the `/admin/dashboard` to add, update, or remove certifications via Server Actions.
 
 ---
@@ -62,6 +62,9 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
 - **2026-08-23**:
+  - Built [`components/certifications.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/certifications.tsx) section displaying verified credentials, issuer badges, issue date, credential IDs, skill tags, and direct verification links.
+  - Added `Certification` interface and `certificationsData` model to [`data/portfolio.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/data/portfolio.ts).
+  - Integrated Certifications section into main page assembly and navigation links in Header and Footer.
   - Repositioned profile avatar to the top of the Hero section in a mobile-first column layout.
   - Removed floating theme mode badge label from the avatar frame for a cleaner, minimalist aesthetic.
   - Added dual profile image feature with smooth light/dark mode cross-fade transition using `next-themes` and `Next.js Image`.
