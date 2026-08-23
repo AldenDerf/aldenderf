@@ -8,6 +8,7 @@ import { ProjectsManager } from "@/components/admin/projects-manager";
 import { ExperienceManager } from "@/components/admin/experience-manager";
 import { SkillsManager } from "@/components/admin/skills-manager";
 import { ChannelsManager } from "@/components/admin/channels-manager";
+import { FingerprintLock } from "@/components/admin/fingerprint-lock";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
   User,
@@ -20,39 +21,73 @@ import {
   CheckCircle2,
   RefreshCw,
   LayoutDashboard,
+  LogOut,
 } from "lucide-react";
 
 type TabId = "about" | "projects" | "experience" | "skills" | "channels";
 
 export default function AdminDashboardPage() {
   const [data, setData] = useState<PortfolioData | null>(null);
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+  const [hasRegisteredCredentials, setHasRegisteredCredentials] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState<TabId>("about");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Check auth session status
+  const checkSession = async () => {
+    try {
+      const res = await fetch("/api/admin/auth/session");
+      if (res.ok) {
+        const json = await res.json();
+        setAuthenticated(json.authenticated);
+        setHasRegisteredCredentials(json.hasRegisteredCredentials);
+      } else {
+        setAuthenticated(false);
+      }
+    } catch {
+      setAuthenticated(false);
+    }
+  };
+
+  const loadPortfolioData = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/portfolio", { cache: "no-store" });
+      if (res.ok) {
+        const json = await res.json();
+        setData(json);
+      }
+    } catch (err) {
+      console.error("Failed to load portfolio data in admin:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     let active = true;
-    async function load() {
-      try {
-        const res = await fetch("/api/portfolio", { cache: "no-store" });
-        if (res.ok && active) {
-          const json = await res.json();
-          setData(json);
-        }
-      } catch (err) {
-        console.error("Failed to load portfolio data in admin:", err);
-      } finally {
-        if (active) {
-          setLoading(false);
-        }
+    async function init() {
+      await checkSession();
+      if (active) {
+        await loadPortfolioData();
       }
     }
-    load();
+    init();
     return () => {
       active = false;
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/auth/session", { method: "DELETE" });
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
+    setAuthenticated(false);
+  };
 
   const handleSaveAll = async (updatedData?: PortfolioData) => {
     const payload = updatedData || data;
@@ -86,13 +121,26 @@ export default function AdminDashboardPage() {
     setTimeout(() => setToastMessage(null), 3500);
   };
 
-  if (loading || !data) {
+  // If session is unauthenticated, render the Fingerprint Lock screen!
+  if (authenticated === false) {
+    return (
+      <FingerprintLock
+        hasRegisteredCredentials={hasRegisteredCredentials}
+        onSuccess={() => {
+          setAuthenticated(true);
+          loadPortfolioData();
+        }}
+      />
+    );
+  }
+
+  if (loading || !data || authenticated === null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950">
         <div className="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 shadow-md">
           <RefreshCw className="h-5 w-5 animate-spin text-emerald-500" />
           <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
-            Loading Admin Workspace...
+            Verifying Biometric Session...
           </span>
         </div>
       </div>
@@ -131,7 +179,7 @@ export default function AdminDashboardPage() {
                 </h1>
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono font-medium text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Live Sync
+                  Biometric Locked
                 </span>
               </div>
             </div>
@@ -158,6 +206,15 @@ export default function AdminDashboardPage() {
                 <Save className="h-3.5 w-3.5" />
               )}
               <span>{saving ? "Saving..." : "Save All"}</span>
+            </button>
+
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-red-50 hover:text-red-600 hover:border-red-200 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-red-950/40 dark:hover:text-red-400 transition-colors cursor-pointer"
+              title="Lock & Log Out"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Lock</span>
             </button>
 
             <ThemeToggle />
@@ -289,4 +346,3 @@ export default function AdminDashboardPage() {
     </div>
   );
 }
-

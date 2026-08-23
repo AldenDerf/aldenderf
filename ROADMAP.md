@@ -55,10 +55,11 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 - [x] **Social & Contact Channels Manager:** Built full CRUD (Add, Edit, Delete, Enable/Disable) for custom channels (GitHub, LinkedIn, Email, Twitter/X, YouTube, Telegram, Discord, custom links) with dynamic icons.
 - [x] **Real-Time Data Persistence:** Implemented JSON file store (`data/portfolio-store.json`), service layer (`lib/portfolio-service.ts`), and API route (`app/api/portfolio/route.ts`).
 
-### TASK 7: CERTIFICATIONS MANAGEMENT
-- [ ] **Database Schema**: Add `Certification` model to `schema.prisma` with: id, name, issuer, issueDate, verificationUrl, credentialId.
-- [x] **Portfolio Integration**: Render a clean, minimalist credentials section on the user-facing site (`components/certifications.tsx`).
-- [ ] **Admin Certification Panel**: Create a dedicated tab/form in the `/admin` workspace to add, update, or remove certifications via Server Actions.
+### TASK 8: WEBAUTHN BIOMETRIC (FINGERPRINT / PASSKEY) AUTHENTICATION
+- [x] **WebAuthn Passkey Engine**: Built [`lib/webauthn-service.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/lib/webauthn-service.ts) handling dynamic `rp.id` resolution for production hostnames (`localhost` & production custom domains), base64url challenge generation, credential key storage, and HTTP-only session cookie management.
+- [x] **Biometric API Routes**: Built WebAuthn registration ([`app/api/admin/auth/register/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/admin/auth/register/route.ts)), authentication ([`app/api/admin/auth/authenticate/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/admin/auth/authenticate/route.ts)), and session management ([`app/api/admin/auth/session/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/admin/auth/session/route.ts)).
+- [x] **Fingerprint Lock Overlay**: Created [`components/admin/fingerprint-lock.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/fingerprint-lock.tsx) with native OS biometric prompt invocation (`navigator.credentials.get`), device enrollment (`navigator.credentials.create`), master PIN fallback, and animated scanner UI.
+- [x] **Admin Studio Route Protection**: Updated [`app/admin/page.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/admin/page.tsx) and [`app/admin/login/page.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/admin/login/page.tsx) to enforce session security and include a top navigation Lock/Logout action.
 
 ---
 
@@ -66,6 +67,10 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
 - **2026-08-23**:
+  - Integrated WebAuthn Passkeys / Biometric Fingerprint lock for `/admin` studio, featuring Windows Hello, Touch ID, Android biometrics, and dynamic production domain (`rp.id`) resolution.
+  - Built WebAuthn service layer ([`lib/webauthn-service.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/lib/webauthn-service.ts)) and API routes (`/api/admin/auth/register`, `/api/admin/auth/authenticate`, `/api/admin/auth/session`).
+  - Created [`components/admin/fingerprint-lock.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/fingerprint-lock.tsx) biometric scanner overlay with Master PIN fallback option.
+  - Created dedicated Login page at [`app/admin/login/page.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/admin/login/page.tsx) and updated [`app/admin/page.tsx`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/admin/page.tsx) with session verification & lock action.
   - Implemented Portfolio Admin Studio at [`/admin`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/admin/page.tsx) allowing full dynamic management (Add, Edit, Delete) for About Profile, Featured Engineering Projects, Experience Timeline, Technical Skills, and Social/Contact Channels.
   - Built modular admin editor components: [`AboutEditor`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/about-editor.tsx), [`ProjectsManager`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/projects-manager.tsx), [`ExperienceManager`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/experience-manager.tsx), [`SkillsManager`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/skills-manager.tsx), and [`ChannelsManager`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/channels-manager.tsx).
   - Created JSON data store persistence layer at [`data/portfolio-store.json`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/data/portfolio-store.json) backed by [`lib/portfolio-service.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/lib/portfolio-service.ts) and Next.js App Router API route at [`app/api/portfolio/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/portfolio/route.ts).
@@ -84,6 +89,7 @@ All significant changes and feature updates vibe coded by the AI agent should be
   - Built modular React components: `Hero`, `Projects`, `Experience`, `Skills`, `Contact`, `ThemeToggle`, `Header`, and `Footer`.
   - Configured class-based light/dark mode with `next-themes` and smooth CSS transitions.
   - Added smooth section scrolling, mobile drawer navigation, direct resume PDF download, interactive contact form with clipboard copy, and social links.
+
 
 - **2026-06-21**:
   - Allowed `sharp` and `unrs-resolver` build scripts in `pnpm-workspace.yaml`.
