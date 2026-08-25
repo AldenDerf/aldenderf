@@ -30,10 +30,10 @@ export function ProfileAvatar({
   return (
     <div className="relative group shrink-0">
       {/* Subtle Background Glow Ring */}
-      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 opacity-70 blur-md group-hover:opacity-100 transition duration-500" />
+      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500/30 via-teal-500/30 to-cyan-500/30 dark:from-emerald-500/20 dark:via-teal-500/20 dark:to-cyan-500/20 opacity-70 blur-md group-hover:opacity-100 transition duration-500" />
 
       {/* Main Avatar Container */}
-      <div className="relative h-32 w-32 sm:h-40 sm:w-40 md:h-44 md:w-44 rounded-2xl overflow-hidden border-2 border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]">
+      <div className="relative h-28 w-28 sm:h-36 sm:w-36 md:h-40 md:w-40 rounded-2xl overflow-hidden border-2 border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-100 dark:bg-zinc-900 shadow-xl transition-transform duration-500 group-hover:scale-[1.03]">
         {/* Light Mode Image */}
         <div
           className={`absolute inset-0 transition-all duration-700 ease-in-out ${
@@ -46,7 +46,7 @@ export function ProfileAvatar({
             src={avatarLight}
             alt={name}
             fill
-            sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
+            sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
             className="object-cover object-center"
             priority
           />
@@ -64,7 +64,7 @@ export function ProfileAvatar({
             src={avatarDark}
             alt={name}
             fill
-            sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
+            sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
             className="object-cover object-center"
             priority
           />
