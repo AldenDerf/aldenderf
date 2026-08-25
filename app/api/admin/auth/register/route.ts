@@ -5,6 +5,7 @@ import {
   getRelyingPartyId,
   generateChallenge,
   createAdminSession,
+  verifyAdminSession,
 } from "@/lib/webauthn-service";
 
 export async function GET(request: Request) {
@@ -41,10 +42,9 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { id, rawId, response } = body;
+    const { id, rawId, response, pin } = body;
 
     if (!id || !rawId) {
-
       return NextResponse.json(
         { error: "Invalid credential payload" },
         { status: 400 }
@@ -52,8 +52,19 @@ export async function POST(request: Request) {
     }
 
     const store = getWebAuthnStore();
+    const isAuth = await verifyAdminSession();
 
-    // Check if credential already exists
+    // If there are existing credentials and user is NOT authenticated, require PIN verification
+    if (store.credentials.length > 0 && !isAuth) {
+      if (!pin || pin !== store.masterPin) {
+        return NextResponse.json(
+          { error: "Master PIN verification required to register new fingerprint" },
+          { status: 401 }
+        );
+      }
+    }
+
+    // Save credential if not already stored
     const exists = store.credentials.some((c) => c.id === id);
     if (!exists) {
       store.credentials.push({
@@ -66,7 +77,7 @@ export async function POST(request: Request) {
       saveWebAuthnStore(store);
     }
 
-    // Set authenticated session cookie upon registration
+    // Issue authenticated session cookie
     await createAdminSession();
 
     return NextResponse.json({ success: true });

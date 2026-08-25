@@ -68,6 +68,8 @@ export function FingerprintLock({
     isWebAuthnSupported ? "fingerprint" : "pin"
   );
   const [pinInput, setPinInput] = useState("");
+  const [registerPin, setRegisterPin] = useState("");
+  const [showRegisterPinModal, setShowRegisterPinModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
@@ -80,14 +82,12 @@ export function FingerprintLock({
     setLoading(true);
 
     try {
-      // 1. Fetch challenge options from API
       const resOptions = await fetch("/api/admin/auth/authenticate");
       if (!resOptions.ok) {
         throw new Error("Failed to initialize WebAuthn challenge");
       }
       const options = await resOptions.json();
 
-      // Convert challenge string to ArrayBuffer
       const publicKeyCredentialRequestOptions: PublicKeyCredentialRequestOptions =
         {
           challenge: base64UrlToBuffer(options.challenge),
@@ -103,7 +103,6 @@ export function FingerprintLock({
           ),
         };
 
-      // 2. Trigger native OS / Browser Fingerprint Prompt (Windows Hello / Touch ID)
       const credential = (await navigator.credentials.get({
         publicKey: publicKeyCredentialRequestOptions,
       })) as PublicKeyCredential;
@@ -112,14 +111,12 @@ export function FingerprintLock({
         throw new Error("Biometric scan cancelled or failed");
       }
 
-      // Convert response credential to JSON string payload
       const credentialPayload = {
         id: credential.id,
         rawId: bufferToBase64Url(credential.rawId),
         type: credential.type,
       };
 
-      // 3. Send payload to API for verification & session cookie issue
       const verifyRes = await fetch("/api/admin/auth/authenticate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -151,8 +148,23 @@ export function FingerprintLock({
     }
   };
 
-  // WebAuthn Fingerprint Registration (First Time Setup / Enroll New Device)
-  const handleRegisterFingerprint = async () => {
+  // Start Fingerprint Registration (prompts Master PIN first if registered credentials exist)
+  const handleStartRegistration = () => {
+    if (hasRegistered) {
+      setShowRegisterPinModal(true);
+      setRegisterPin("");
+    } else {
+      executeRegistration();
+    }
+  };
+
+  const handleConfirmRegisterPin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowRegisterPinModal(false);
+    executeRegistration(registerPin);
+  };
+
+  const executeRegistration = async (pinVerification?: string) => {
     setErrorMsg(null);
     setSuccessMsg(null);
     setLoading(true);
@@ -177,7 +189,6 @@ export function FingerprintLock({
           attestation: options.attestation,
         };
 
-      // Trigger OS Biometric Registration Prompt (Touch ID / Windows Hello)
       const credential = (await navigator.credentials.create({
         publicKey: publicKeyCredentialCreationOptions,
       })) as PublicKeyCredential;
@@ -188,6 +199,7 @@ export function FingerprintLock({
         id: credential.id,
         rawId: bufferToBase64Url(credential.rawId),
         type: credential.type,
+        pin: pinVerification,
       };
 
       const saveRes = await fetch("/api/admin/auth/register", {
@@ -196,7 +208,10 @@ export function FingerprintLock({
         body: JSON.stringify(payload),
       });
 
-      if (!saveRes.ok) throw new Error("Failed to save registered biometric key");
+      if (!saveRes.ok) {
+        const jsonErr = await saveRes.json();
+        throw new Error(jsonErr.error || "Failed to save registered biometric key");
+      }
 
       setHasRegistered(true);
       setSuccessMsg("Fingerprint registered successfully! Unlocking...");
@@ -344,7 +359,7 @@ export function FingerprintLock({
 
               <div className="text-center pt-2">
                 <button
-                  onClick={handleRegisterFingerprint}
+                  onClick={handleStartRegistration}
                   disabled={loading}
                   className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-emerald-400 transition-colors cursor-pointer"
                 >
@@ -394,6 +409,50 @@ export function FingerprintLock({
           )}
         </div>
       </div>
+
+      {/* Registration Verification Modal */}
+      {showRegisterPinModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4">
+          <div className="w-full max-w-sm rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <KeyRound className="h-4 w-4 text-amber-400" />
+              <span>Verify Master PIN</span>
+            </h3>
+
+            <p className="text-xs text-zinc-400">
+              Please enter your Master PIN to authorize enrolling a new fingerprint on this device.
+            </p>
+
+            <form onSubmit={handleConfirmRegisterPin} className="space-y-4">
+              <input
+                type="password"
+                required
+                value={registerPin}
+                onChange={(e) => setRegisterPin(e.target.value)}
+                placeholder="Enter Master PIN"
+                className="w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none"
+              />
+
+              <div className="flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowRegisterPinModal(false)}
+                  className="rounded-lg border border-zinc-800 bg-zinc-800 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:bg-zinc-700 transition-colors"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-zinc-950 hover:bg-emerald-400 transition-colors"
+                >
+                  Authorize Enrollment
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

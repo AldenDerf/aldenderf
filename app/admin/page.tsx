@@ -8,6 +8,7 @@ import { ProjectsManager } from "@/components/admin/projects-manager";
 import { ExperienceManager } from "@/components/admin/experience-manager";
 import { SkillsManager } from "@/components/admin/skills-manager";
 import { ChannelsManager } from "@/components/admin/channels-manager";
+import { SecuritySettings } from "@/components/admin/security-settings";
 import { FingerprintLock } from "@/components/admin/fingerprint-lock";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -16,6 +17,7 @@ import {
   Briefcase,
   Cpu,
   Share2,
+  ShieldCheck,
   ArrowUpRight,
   Save,
   CheckCircle2,
@@ -24,7 +26,7 @@ import {
   LogOut,
 } from "lucide-react";
 
-type TabId = "about" | "projects" | "experience" | "skills" | "channels";
+type TabId = "about" | "projects" | "experience" | "skills" | "channels" | "security";
 
 export default function AdminDashboardPage() {
   const [data, setData] = useState<PortfolioData | null>(null);
@@ -153,6 +155,7 @@ export default function AdminDashboardPage() {
     { id: "experience", label: "Experience", icon: Briefcase },
     { id: "skills", label: "Skills", icon: Cpu },
     { id: "channels", label: "Social Channels", icon: Share2 },
+    { id: "security", label: "Security & Passcode", icon: ShieldCheck },
   ];
 
   return (
@@ -341,6 +344,8 @@ export default function AdminDashboardPage() {
               }}
             />
           )}
+
+          {activeTab === "security" && <SecuritySettings />}
         </div>
       </main>
     </div>

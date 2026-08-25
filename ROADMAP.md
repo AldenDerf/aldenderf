@@ -66,6 +66,12 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 ## 📈 Change Log & Progress Ledger
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
+- **2026-08-25**:
+  - Added Security & Passcode settings tab in Portfolio Admin Studio (`/admin`) for Master PIN management and biometric scanner enrollment.
+  - Implemented PIN update API route at [`app/api/admin/auth/pin/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/admin/auth/pin/route.ts) with current PIN verification and session authentication checks.
+  - Created [`SecuritySettings`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/security-settings.tsx) component allowing Master PIN updates and direct WebAuthn passkey enrollment.
+  - Added Master PIN authorization step in [`FingerprintLock`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/components/admin/fingerprint-lock.tsx) for registering additional biometric credentials when active credentials exist.
+
 - **2026-08-23**:
   - Integrated WebAuthn Passkeys / Biometric Fingerprint lock for `/admin` studio, featuring Windows Hello, Touch ID, Android biometrics, and dynamic production domain (`rp.id`) resolution.
   - Built WebAuthn service layer ([`lib/webauthn-service.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/lib/webauthn-service.ts)) and API routes (`/api/admin/auth/register`, `/api/admin/auth/authenticate`, `/api/admin/auth/session`).
