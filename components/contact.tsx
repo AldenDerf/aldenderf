@@ -92,7 +92,7 @@ export function Contact({
           </h2>
 
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
-            Whether you are looking for a full-time Full-Stack Developer, need assistance with enterprise system workflows, or want to discuss technical architecture—feel free to reach out.
+            I am open to full-time software engineering and full-stack development roles. Feel free to reach out.
           </p>
         </div>
 

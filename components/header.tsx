@@ -58,7 +58,7 @@ export function Header({ profile = profileData }: HeaderProps) {
 
         {/* Actions (Resume & Theme Toggle) */}
         <div className="flex items-center gap-3">
-          <a
+          {profile.resumeUrl && profile.resumeUrl !== "/resume.pdf" && <a
             href={profile.resumeUrl}
             download="Alden_Derf_Resume.pdf"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-semibold text-zinc-800 hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 transition-colors cursor-pointer"
@@ -66,7 +66,7 @@ export function Header({ profile = profileData }: HeaderProps) {
           >
             <Download className="h-3.5 w-3.5" />
             <span>Resume</span>
-          </a>
+          </a>}
 
           <ThemeToggle />
 
@@ -104,7 +104,7 @@ export function Header({ profile = profileData }: HeaderProps) {
               <span>Admin Studio</span>
             </Link>
 
-            <a
+            {profile.resumeUrl && profile.resumeUrl !== "/resume.pdf" && <a
               href={profile.resumeUrl}
               download="Alden_Derf_Resume.pdf"
               onClick={() => setMobileMenuOpen(false)}
@@ -112,7 +112,7 @@ export function Header({ profile = profileData }: HeaderProps) {
             >
               <Download className="h-4 w-4" />
               <span>Download Resume (PDF)</span>
-            </a>
+            </a>}
           </nav>
         </div>
       )}

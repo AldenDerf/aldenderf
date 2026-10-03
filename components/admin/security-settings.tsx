@@ -6,7 +6,6 @@ import {
   KeyRound,
   Fingerprint,
   Plus,
-  Trash2,
   CheckCircle,
   AlertCircle,
   Laptop,

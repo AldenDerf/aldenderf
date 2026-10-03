@@ -28,26 +28,26 @@ export function ProfileAvatar({
   const isDark = mounted ? resolvedTheme === "dark" : false;
 
   return (
-    <div className="relative group shrink-0">
+    <div className="relative group w-full max-w-[300px] sm:max-w-[340px] md:max-w-[380px] mx-auto md:mx-0">
       {/* Subtle Background Glow Ring */}
-      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500/30 via-teal-500/30 to-cyan-500/30 dark:from-emerald-500/20 dark:via-teal-500/20 dark:to-cyan-500/20 opacity-70 blur-md group-hover:opacity-100 transition duration-500" />
+      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 opacity-50 blur-md group-hover:opacity-80 transition duration-500" />
 
-      {/* Main Avatar Container */}
-      <div className="relative h-28 w-28 sm:h-36 sm:w-36 md:h-40 md:w-40 rounded-2xl overflow-hidden border-2 border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-100 dark:bg-zinc-900 shadow-xl transition-transform duration-500 group-hover:scale-[1.03]">
+      {/* Main Square Avatar Container */}
+      <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-100 dark:bg-zinc-900 shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]">
         {/* Light Mode Image */}
         <div
           className={`absolute inset-0 transition-all duration-700 ease-in-out ${
             !mounted || !isDark
-              ? "opacity-100 scale-100 rotate-0"
-              : "opacity-0 scale-95 -rotate-1 pointer-events-none"
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-95 pointer-events-none"
           }`}
         >
           <Image
             src={avatarLight}
             alt={name}
             fill
-            sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
-            className="object-cover object-center"
+            sizes="(max-width: 768px) 300px, 380px"
+            className="object-cover object-center grayscale contrast-105 group-hover:grayscale-0 transition-all duration-500"
             priority
           />
         </div>
@@ -56,22 +56,19 @@ export function ProfileAvatar({
         <div
           className={`absolute inset-0 transition-all duration-700 ease-in-out ${
             mounted && isDark
-              ? "opacity-100 scale-100 rotate-0"
-              : "opacity-0 scale-95 rotate-1 pointer-events-none"
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-95 pointer-events-none"
           }`}
         >
           <Image
             src={avatarDark}
             alt={name}
             fill
-            sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
-            className="object-cover object-center"
+            sizes="(max-width: 768px) 300px, 380px"
+            className="object-cover object-center grayscale contrast-105 group-hover:grayscale-0 transition-all duration-500"
             priority
           />
         </div>
-
-        {/* Subtle Overlay Shine */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </div>
   );

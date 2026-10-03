@@ -66,7 +66,28 @@ This document tracks the features, progress, and upcoming tasks of the **aldende
 ## 📈 Change Log & Progress Ledger
 All significant changes and feature updates vibe coded by the AI agent should be logged here:
 
+- **2026-10-03 (Phase 5)**:
+  - [x] Add a Deployment & Infrastructure skills category with confirmed managed and on-premise environments.
+  - [x] Add optional deployment lists for MVA and BGHWeb, with distinct badges on project cards and editable strings in the admin Projects Manager.
+  - [x] Leave Learn deployment unspecified pending confirmation and keep public infrastructure details broad.
+
+- **2026-10-03 (Phase 4)**:
+  - [x] Add canonical identity, natural visible identity copy, ProfilePage/Person structured data, and complete root social/search metadata.
+  - [x] Add a public homepage sitemap and robots rules that exclude admin surfaces; mark admin pages noindex.
+  - [x] Verify heading structure and keep the existing favicon configuration.
+
+- **2026-10-03 (Phase 3)**:
+  - [x] Add concise AI-assisted engineering copy and a compact, labeled workflow row to the hero.
+  - [x] Use reusable labeled technology badges in Skills and project stacks, with brand icons where available and generic fallbacks.
+  - [x] Separate AI-assisted tools from software technologies in the Skills data while preserving string-based admin editing.
+
+- **2026-10-03**:
+  - [x] Present MVA, BGHWeb, and Learn with context, status, problem, solution, technical highlights, and stack in compact responsive cards.
+  - [x] Extend Project and admin editing with optional context, status, problem, and solution fields.
+  - [x] Correct LinkedIn links, hide sample resume actions, and remove the unused security settings import.
+
 - **2026-08-25**:
+  - Replicated exact Bryl Lim portfolio Hero layout: featured large square portrait image on the left (`ProfileAvatar`), large bold monospace title for **Alden Derf**, clean pitch paragraphs, and minimalist inline monospace social links (`github ↗`, `linkedin ↗`, `email ↗`, `resume ↗`).
   - Redesigned Hero & About Profile section layout: highlighted **Alden Derf** name with vibrant gradient typography as primary focal title, refined headline font scaling, and aligned profile avatar to side-by-side header row.
   - Added Security & Passcode settings tab in Portfolio Admin Studio (`/admin`) for Master PIN management and biometric scanner enrollment.
   - Implemented PIN update API route at [`app/api/admin/auth/pin/route.ts`](file:///c:/nextjs-projects/ts/portfolio/aldenderf/app/api/admin/auth/pin/route.ts) with current PIN verification and session authentication checks.

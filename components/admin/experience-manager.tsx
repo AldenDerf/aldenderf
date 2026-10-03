@@ -151,10 +151,10 @@ export function ExperienceManager({
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
                   {item.role}
                 </h3>
-                <span className="inline-flex items-center gap-1 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                {item.period && <span className="inline-flex items-center gap-1 text-xs font-mono text-zinc-500 dark:text-zinc-400">
                   <Calendar className="h-3.5 w-3.5" />
                   {item.period}
-                </span>
+                </span>}
               </div>
 
               <div className="flex items-center gap-2 text-xs font-medium text-zinc-600 dark:text-zinc-400">
@@ -266,11 +266,10 @@ export function ExperienceManager({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
-                    Period / Timeframe <span className="text-red-500">*</span>
+                    Period / Timeframe
                   </label>
                   <input
                     type="text"
-                    required
                     value={editingItem.period}
                     onChange={(e) =>
                       setEditingItem({

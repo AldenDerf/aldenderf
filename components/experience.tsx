@@ -19,7 +19,7 @@ export function Experience({ items = experienceData }: ExperienceProps) {
             Experience & Background Timeline
           </h2>
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
-            A progression spanning enterprise procurement logistics, clinical software development, modern web engineering, and technical instruction.
+            Experience across procurement, hospital IT, application support, and technical instruction.
           </p>
         </div>
 
@@ -36,10 +36,10 @@ export function Experience({ items = experienceData }: ExperienceProps) {
                   <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-50">
                     {item.role}
                   </h3>
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">
+                  {item.period && <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500 dark:text-zinc-400 shrink-0">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>{item.period}</span>
-                  </div>
+                  </div>}
                 </div>
 
                 {/* Subheader: Company & Location */}

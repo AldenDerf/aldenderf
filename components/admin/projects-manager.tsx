@@ -23,6 +23,7 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [techInput, setTechInput] = useState("");
+  const [deploymentInput, setDeploymentInput] = useState("");
   const [highlightInput, setHighlightInput] = useState("");
 
   const handleOpenCreate = () => {
@@ -31,12 +32,14 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
       title: "",
       description: "",
       techStack: [],
+      deployment: [],
       highlights: [],
       liveUrl: "",
       githubUrl: "",
       featured: true,
     });
     setTechInput("");
+    setDeploymentInput("");
     setHighlightInput("");
     setIsModalOpen(true);
   };
@@ -44,6 +47,7 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
   const handleOpenEdit = (proj: Project) => {
     setEditingProject({ ...proj });
     setTechInput("");
+    setDeploymentInput("");
     setHighlightInput("");
     setIsModalOpen(true);
   };
@@ -90,6 +94,24 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
     setEditingProject({
       ...editingProject,
       techStack: editingProject.techStack.filter((_, i) => i !== index),
+    });
+  };
+
+  const handleAddDeployment = () => {
+    const value = deploymentInput.trim();
+    if (!value || !editingProject) return;
+    setEditingProject({
+      ...editingProject,
+      deployment: [...(editingProject.deployment ?? []), value],
+    });
+    setDeploymentInput("");
+  };
+
+  const handleRemoveDeployment = (index: number) => {
+    if (!editingProject) return;
+    setEditingProject({
+      ...editingProject,
+      deployment: (editingProject.deployment ?? []).filter((_, i) => i !== index),
     });
   };
 
@@ -263,6 +285,20 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {([['context', 'Context'], ['status', 'Status']] as const).map(([field, label]) => (
+                  <div key={field} className="space-y-1.5">
+                    <label htmlFor={`project-${field}`} className="text-xs font-medium text-zinc-700 dark:text-zinc-300">{label}</label>
+                    <input id={`project-${field}`} type="text" value={editingProject[field] || ""} onChange={(e) => setEditingProject({ ...editingProject, [field]: e.target.value })} className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2 text-sm text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100" />
+                  </div>
+                ))}
+              </div>
+              {([['problem', 'Problem'], ['solution', 'What I Built']] as const).map(([field, label]) => (
+                <div key={field} className="space-y-1.5">
+                  <label htmlFor={`project-${field}`} className="text-xs font-medium text-zinc-700 dark:text-zinc-300">{label}</label>
+                  <textarea id={`project-${field}`} rows={3} value={editingProject[field] || ""} onChange={(e) => setEditingProject({ ...editingProject, [field]: e.target.value })} className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2 text-sm text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100" />
+                </div>
+              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
                     Live Demo URL
@@ -337,6 +373,22 @@ export function ProjectsManager({ projects, onUpdate }: ProjectsManagerProps) {
                   >
                     Add Tag
                   </button>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <label htmlFor="deploymentInput" className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Deployment &amp; Infrastructure</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {(editingProject.deployment ?? []).map((platform, index) => (
+                    <span key={`${platform}-${index}`} className="inline-flex items-center gap-1 rounded-md bg-zinc-100 px-2.5 py-1 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+                      {platform}
+                      <button type="button" onClick={() => handleRemoveDeployment(index)} aria-label={`Remove ${platform}`} className="ml-1 text-zinc-500 hover:text-red-600"><X className="h-3 w-3" /></button>
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <input id="deploymentInput" type="text" value={deploymentInput} onChange={(event) => setDeploymentInput(event.target.value)} placeholder="Add confirmed platform or environment" className="min-w-0 flex-1 rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-1.5 text-xs text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100" />
+                  <button type="button" onClick={handleAddDeployment} className="rounded-lg bg-zinc-200 px-3 py-1.5 text-xs font-semibold text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700">Add</button>
                 </div>
               </div>
 

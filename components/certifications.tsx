@@ -13,15 +13,19 @@ export function Certifications({ items = certificationsData }: CertificationsPro
         <div className="flex flex-col gap-2 mb-10">
           <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-zinc-500 uppercase dark:text-zinc-400">
             <Award className="h-4 w-4" />
-            <span>Verified Credentials</span>
+            <span>Credentials</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Certifications & Training
           </h2>
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
-            Industry-recognized credentials, specialized engineering programs, and technical certifications.
+            Completed certifications will appear here once verified.
           </p>
         </div>
+
+        {items.length === 0 && (
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">No verified certifications listed yet.</p>
+        )}
 
         {/* Certifications Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

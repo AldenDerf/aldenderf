@@ -2,7 +2,12 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  context?: string;
+  status?: string;
+  problem?: string;
+  solution?: string;
   techStack: string[];
+  deployment?: string[];
   highlights: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -43,162 +48,248 @@ export interface ProfileInfo {
 }
 
 export const profileData: ProfileInfo = {
-  name: "Alden Derf",
-  title: "Full-Stack Developer & Systems Builder",
-  headline: "Full-Stack Developer & Systems Builder",
-  subtitle:
-    "Specializing in TypeScript, Next.js, and scalable database architectures. Bridging enterprise operational workflows with modern web engineering.",
-  statusBadge: "Available for Full-Time Roles",
-  isAvailable: true,
-  email: "aldenderf@example.com",
-  github: "https://github.com/aldenderf",
-  linkedin: "https://linkedin.com/in/aldenderf",
-  resumeUrl: "/resume.pdf",
-  avatarLight: "/profile/what%20shirt%20with%20white%20background.png",
-  avatarDark: "/profile/Black%20shirt%20with%20shades.png",
-  bio: [
-    "I am a software engineer focused on building resilient, high-performance web applications and backend systems.",
-    "With a background combining enterprise administrative workflows, hospital system development, and modern full-stack web technologies, I engineer applications that solve real operational bottlenecks.",
-  ],
+  "name": "Alden Derf",
+  "title": "Software Engineer · Full-Stack Developer",
+  "headline": "Software Engineer · Full-Stack Developer",
+  "subtitle": "I build full-stack applications that solve real operational problems using modern web technologies and an AI-assisted engineering workflow.",
+  "statusBadge": "Available for Full-Time Roles",
+  "isAvailable": true,
+  "email": "aldenderfc.fabro99@gmail.com",
+  "github": "https://github.com/aldenderf",
+  "linkedin": "https://www.linkedin.com/in/alden-derf/",
+  "resumeUrl": "",
+  "avatarLight": "/profile/what%20shirt%20with%20white%20background.png",
+  "avatarDark": "/profile/Black%20shirt%20with%20shades.png",
+  "bio": [
+    "I'm Alden Derf Fabro, an Ivatan software engineer and full-stack developer from Batanes, Philippines. My experience spans application support, hospital system development, technical instruction, and government operations.",
+    "I build full-stack applications with Next.js, React, TypeScript, Node.js, PostgreSQL, Supabase, Prisma, Laravel/PHP, and SQL Server."
+  ]
 };
 
 export const projectsData: Project[] = [
   {
-    id: "medicare-hospital-system",
-    title: "Enterprise Health Management System",
-    description:
-      "A robust web-based hospital administration platform built to manage patient admissions, clinical records, and department workflows seamlessly with zero downtime. Optimized data queries and structured strict access controls to serve multi-department medical staff.",
-    techStack: ["Next.js", "TypeScript", "Laravel", "MySQL", "Prisma", "Tailwind CSS"],
-    highlights: [
-      "Role-Based Access Control (RBAC): Implemented granular user permissions for doctors, nurses, and administrative staff.",
-      "Schema & Query Optimization: Architected normalized database schemas reducing patient lookup latency by 45%.",
-      "API Integration: Developed secure REST APIs with automated validation middleware for clinical data compliance.",
+    "id": "mva-2026",
+    "title": "MVA 2026 Mahatao Volleyball League Platform",
+    "description": "Full-stack tournament management for the Mahatao Volleyball Association.",
+    "context": "Community Sports / Tournament Management",
+    "status": "Active Development",
+    "problem": "Tournament registration, roster tracking, payments, and league administration require manual workflows that become difficult to track as teams and players increase.",
+    "solution": "Built public team registration, roster management, payment tracking, administrative verification, and tournament-aware public pages.",
+    "techStack": [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL",
+      "Supabase",
+      "Prisma",
+      "Tailwind CSS"
     ],
-    liveUrl: "https://demo.aldenderf.dev/hospital",
-    githubUrl: "https://github.com/aldenderf/hospital-system",
-    featured: true,
+    "deployment": ["Vercel", "Supabase"],
+    "highlights": [
+      "Public team registration with division-aware workflows.",
+      "Per-player registration payment tracking for pending, verified, and outstanding balances, including legacy payment allocation.",
+      "Role-based administration and audit logging.",
+      "Safe correction workflows for player identity, rosters, teams, and payments, with deletion safeguards for financially linked records.",
+      "Database migrations for evolving production data requirements."
+    ],
+    "featured": true
   },
   {
-    id: "procure-track-enterprise",
-    title: "ProcureTrack Enterprise Portal",
-    description:
-      "An automated procurement lifecycle management application streamlining purchase requisitions, vendor approvals, and audit reporting for enterprise operations. Replaced manual spreadsheets with real-time status tracking and automated workflow triggers.",
-    techStack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Supabase"],
-    highlights: [
-      "Enterprise Workflow Automation: Automated multi-stage approval pipelines adhering to corporate data compliance.",
-      "Complex Schema Design: Built audit-proof data relations tracking inventory balances and vendor compliance metrics.",
-      "Optimized Server Actions: Leveraged Next.js Server Actions for fast server-side processing and instant UI revalidation.",
+    "id": "bghweb",
+    "title": "BGHWeb Hospital Internal System",
+    "description": "Internal hospital application maintained and modernized within existing production workflows.",
+    "context": "Healthcare / Internal Enterprise Application",
+    "status": "Production Maintenance & Modernization",
+    "problem": "A long-running hospital application needs continued development and modernization while staying compatible with a shared database, organizational accounts, and production workflows.",
+    "solution": "Maintain and incrementally modernize an application built with Laravel, React, Inertia, Vite, and Microsoft SQL Server.",
+    "techStack": [
+      "Laravel",
+      "PHP",
+      "React",
+      "Inertia.js",
+      "TypeScript",
+      "Vite",
+      "Microsoft SQL Server"
     ],
-    liveUrl: "https://demo.aldenderf.dev/procuretrack",
-    githubUrl: "https://github.com/aldenderf/procure-track",
-    featured: true,
+    "deployment": ["Windows Server", "Laragon", "Microsoft SQL Server"],
+    "highlights": [
+      "Maintains an existing production hospital application.",
+      "Works with a shared Microsoft SQL Server database and existing account infrastructure.",
+      "Incrementally migrates React components from JavaScript to TypeScript.",
+      "Maintains role-based access control while modernizing frontend modules.",
+      "Uses staged branches and focused migrations to reduce modernization risk."
+    ],
+    "featured": true
   },
   {
-    id: "dev-hub-platform",
-    title: "DevHub Developer Workspace & Portfolio Engine",
-    description:
-      "A high-performance developer content and portfolio platform featuring server-rendered dynamic feeds, markdown content engine, and real-time dashboard analytics. Built with clean architecture principles for maximum scannability and speed.",
-    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Lucide React"],
-    highlights: [
-      "Sub-100ms Page Loads: Optimized SSR/ISR rendering pipeline with zero render-blocking client javascript bottlenecks.",
-      "Modular Architecture: Decoupled data contracts from UI presentation layer enabling effortless content updates.",
-      "Responsive Dark/Light System: Seamless theme context integration with zero layout flash and high contrast readability.",
+    "id": "learn",
+    "title": "Learn — Web Systems Learning Platform",
+    "description": "Structured lessons and labs for Web Systems and related IT classes.",
+    "context": "Education / Developer Learning Platform",
+    "status": "Actively Used for Teaching",
+    "problem": "Students need beginner-friendly development materials that remain practical with limited internet access and device availability.",
+    "solution": "Built a learning platform with lessons, labs, code examples, checkpoints, and practical exercises for classroom use.",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TypeScript"
     ],
-    liveUrl: "https://aldenderf.dev",
-    githubUrl: "https://github.com/aldenderf/aldenderf-portfolio",
-    featured: true,
-  },
+    "highlights": [
+      "Structured self-paced lessons and laboratory exercises.",
+      "Beginner-friendly explanations for Express, PostgreSQL, Supabase, React, and web development.",
+      "Copyable code examples and troubleshooting guidance.",
+      "Progression from backend fundamentals through frontend and full-stack integration.",
+      "Materials designed with limited connectivity in mind."
+    ],
+    "featured": true
+  }
 ];
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: "part-time-it-instructor",
-    role: "Part-Time IT Instructor",
-    company: "Higher Education / Technical Institute",
-    location: "On-Site / Hybrid",
-    period: "2024 – Present",
-    description:
-      "Delivering core computer science and web development curriculum while mentoring students in software development practices.",
-    highlights: [
-      "Instructed courses on Web Development, Relational Database Systems, and Object-Oriented Programming principles.",
-      "Mentored student teams through capstone projects, enforcing git workflow, clean code standards, and code reviews.",
-      "Created practical lab assignments simulating real-world full-stack development scenarios.",
+    "id": "administrative-assistant-procurement",
+    "role": "Administrative Assistant I — Procurement",
+    "company": "Batanes General Hospital",
+    "period": "July 2025 – Present",
+    "description": "Handles procurement-related administrative workflows, supplier documentation, purchase orders, monitoring, and compliance while continuing software development work outside the primary role.",
+    "highlights": [
+      "Monitors procurement activity and prepares structured reports.",
+      "Verifies supplier documentation and purchase order records.",
+      "Applies practical workflow and process understanding to daily operations."
     ],
-    skills: ["TypeScript", "React", "SQL", "Git", "System Architecture", "Mentorship"],
+    "skills": [
+      "Procurement Monitoring",
+      "Documentation",
+      "Reporting"
+    ]
   },
   {
-    id: "full-stack-mern-specialization",
-    role: "Full-Stack / MERN & Next.js Specialization",
-    company: "Advanced Software Engineering Program",
-    location: "Remote",
-    period: "2023 – 2024",
-    description:
-      "Intensive specialization in modern JavaScript/TypeScript ecosystems, cloud database architectures, and Next.js full-stack development.",
-    highlights: [
-      "Built multiple full-stack applications with Next.js App Router, React Server Components, and Tailwind CSS.",
-      "Implemented OAuth, JWT, and session authentication alongside Supabase and PostgreSQL database integrations.",
-      "Mastered containerized development workflows using Docker and automated deployment pipelines.",
+    "id": "part-time-it-instructor",
+    "role": "Part-Time IT Instructor",
+    "company": "Batanes State College",
+    "period": "Present",
+    "description": "Teaches IT and web development subjects including Web Technologies, Web Systems, Information Assurance & Security, and System Administration.",
+    "highlights": [
+      "Teaches React, Express, Node.js, PostgreSQL/Supabase, HTML/CSS/JavaScript, Git, and system administration topics.",
+      "Creates practical labs, tutorials, and assessment materials.",
+      "Designs beginner-friendly materials for students with limited connectivity."
     ],
-    skills: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker"],
+    "skills": [
+      "React",
+      "Express",
+      "Node.js",
+      "PostgreSQL",
+      "Git"
+    ]
   },
   {
-    id: "computer-programmer-laravel",
-    role: "Computer Programmer (Laravel / PHP)",
-    company: "Healthcare Organization",
-    location: "On-Site",
-    period: "2021 – 2023",
-    description:
-      "Engineered and maintained hospital management systems, internal data tools, and clinical information software.",
-    highlights: [
-      "Developed hospital module endpoints using Laravel MVC framework and MySQL relational databases.",
-      "Implemented security controls and access permissions for sensitive healthcare patient records.",
-      "Refactored legacy database queries, improving reporting speed by 40% across administrative departments.",
+    "id": "bgh-computer-programmer",
+    "role": "Administrative Aide IV / Computer Programmer",
+    "company": "Batanes General Hospital",
+    "period": "",
+    "description": "Provided IT support and contributed to internal hospital software and systems.",
+    "highlights": [
+      "Developed and maintained Laravel-based internal systems.",
+      "Supported users and hospital IT operations.",
+      "Worked with databases, access control, and internal applications."
     ],
-    skills: ["Laravel", "PHP", "MySQL", "REST APIs", "MVC", "System Optimization"],
+    "skills": [
+      "Laravel",
+      "PHP",
+      "Databases",
+      "Access Control"
+    ]
   },
   {
-    id: "administrative-assistant-procurement",
-    role: "Administrative Assistant (Procurement)",
-    company: "Enterprise Operations Division",
-    location: "On-Site",
-    period: "2019 – 2021",
-    description:
-      "Managed enterprise procurement lifecycles, vendor compliance checks, data accuracy, and operational logistics.",
-    highlights: [
-      "Oversewed end-to-end purchasing pipelines, requisition approvals, and inventory auditing processes.",
-      "Ensured strict data compliance and protocol adherence across multi-department procurement records.",
-      "Identified process bottlenecks and established structured data tracking tools to optimize operational turnaround time.",
-    ],
-    skills: ["Enterprise Workflows", "Procurement Lifecycle", "Data Compliance", "Process Optimization"],
+    "id": "unilab-application-support",
+    "role": "Application Support",
+    "company": "Unilab via Vertere",
+    "period": "",
+    "description": "Provided application support, troubleshooting, and user/system issue resolution.",
+    "highlights": [],
+    "skills": [
+      "Application Support",
+      "Troubleshooting"
+    ]
   },
+  {
+    "id": "batanelco-it-assistant",
+    "role": "IT Assistant",
+    "company": "BATANELCO",
+    "period": "",
+    "description": "Provided IT support, technical troubleshooting, and assistance with organizational systems.",
+    "highlights": [],
+    "skills": [
+      "IT Support",
+      "Troubleshooting"
+    ]
+  }
 ];
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "Frontend",
-    description: "Building responsive, modern, and accessible user interfaces.",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"],
+    "title": "Frontend",
+    "description": "Building web interfaces and classroom projects.",
+    "skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "HTML5",
+      "CSS3"
+    ]
   },
   {
-    title: "Backend & APIs",
-    description: "Designing reliable server systems and API endpoints.",
-    skills: ["Node.js", "Laravel / PHP", "Express", "REST APIs", "Server Actions"],
+    "title": "Backend & APIs",
+    "description": "Building and maintaining application services.",
+    "skills": [
+      "Node.js",
+      "Express",
+      "Laravel",
+      "PHP",
+      "REST APIs"
+    ]
   },
   {
-    title: "Databases & Tools",
-    description: "Managing data storage, ORMs, and developer tooling.",
-    skills: ["PostgreSQL", "MySQL", "Prisma ORM", "Supabase", "Git / GitHub", "Docker"],
+    "title": "Databases",
+    "description": "Working with application data.",
+    "skills": [
+      "PostgreSQL",
+      "Supabase",
+      "Microsoft SQL Server",
+      "MySQL",
+      "Prisma ORM"
+    ]
   },
   {
-    title: "Concepts",
-    description: "Core architectural principles and operational engineering.",
-    skills: [
+    "title": "Developer Tools / Engineering",
+    "description": "Tools and practices used in development and maintenance.",
+    "skills": [
+      "Git",
+      "GitHub",
+      "Vite",
+      "Postman",
       "RBAC",
-      "Database Schema Design",
-      "Enterprise Workflows",
-      "System Architecture",
-    ],
+      "Database Design",
+      "API Integration",
+      "System Maintenance"
+    ]
   },
+  {
+    "title": "Deployment & Infrastructure",
+    "description": "I deploy and maintain applications across managed platforms and on-premise Windows Server environments.",
+    "skills": ["Vercel", "Supabase", "Windows Server", "Laragon", "Microsoft SQL Server"]
+  },
+  {
+    "title": "AI-Assisted Engineering",
+    "description": "Tools used in my engineering workflow; distinct from the technology stack.",
+    "skills": [
+      "ChatGPT",
+      "Codex",
+      "Antigravity"
+    ]
+  }
 ];
 
 export interface Certification {
@@ -211,35 +302,7 @@ export interface Certification {
   skills?: string[];
 }
 
-export const certificationsData: Certification[] = [
-  {
-    id: "meta-frontend-specialist",
-    name: "Meta Front-End & React Engineering Specialization",
-    issuer: "Meta",
-    issueDate: "2024",
-    credentialId: "META-FE-982401",
-    verificationUrl: "https://coursera.org/verify/specialization/meta-frontend",
-    skills: ["React", "TypeScript", "Advanced JavaScript", "Web Accessibility", "REST APIs"],
-  },
-  {
-    id: "laravel-certified-developer",
-    name: "Laravel Certified Web Application Developer",
-    issuer: "Laravel Certification Authority",
-    issueDate: "2023",
-    credentialId: "LARA-CERT-88412",
-    verificationUrl: "https://laravel.com/certification",
-    skills: ["Laravel", "PHP", "MySQL Schema Design", "MVC Architecture", "REST Security"],
-  },
-  {
-    id: "full-stack-systems-engineering",
-    name: "Full-Stack Software Engineering & Database Systems",
-    issuer: "Software Engineering Academy",
-    issueDate: "2023",
-    credentialId: "FSE-DB-77192",
-    verificationUrl: "https://freecodecamp.org/certification/aldenderf/full-stack",
-    skills: ["Next.js", "Node.js", "PostgreSQL", "Prisma ORM", "Docker"],
-  },
-];
+export const certificationsData: Certification[] = [];
 
 export interface SocialChannel {
   id: string;
@@ -252,26 +315,26 @@ export interface SocialChannel {
 
 export const channelsData: SocialChannel[] = [
   {
-    id: "github",
-    name: "GitHub",
-    url: "https://github.com/aldenderf",
-    icon: "github",
-    enabled: true,
+    "id": "github",
+    "name": "GitHub",
+    "url": "https://github.com/aldenderf",
+    "icon": "github",
+    "enabled": true
   },
   {
-    id: "linkedin",
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/aldenderf",
-    icon: "linkedin",
-    enabled: true,
+    "id": "linkedin",
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/alden-derf/",
+    "icon": "linkedin",
+    "enabled": true
   },
   {
-    id: "email",
-    name: "Email",
-    url: "mailto:aldenderf@example.com",
-    icon: "mail",
-    enabled: true,
-  },
+    "id": "email",
+    "name": "Email",
+    "url": "mailto:aldenderfc.fabro99@gmail.com",
+    "icon": "mail",
+    "enabled": true
+  }
 ];
 
 export interface PortfolioData {

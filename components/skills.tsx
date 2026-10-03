@@ -1,5 +1,6 @@
 import { SkillCategory, skillsData } from "@/data/portfolio";
 import { Cpu, Layout, Server, Database, Layers } from "lucide-react";
+import { DeploymentBadge, TechBadge, WorkflowBadge } from "@/components/technology-badge";
 
 interface SkillsProps {
   categories?: SkillCategory[];
@@ -13,7 +14,10 @@ export function Skills({ categories = skillsData }: SkillsProps) {
       case "backend & apis":
         return <Server className="h-4 w-4 text-emerald-500" />;
       case "databases & tools":
+      case "databases":
         return <Database className="h-4 w-4 text-indigo-500" />;
+      case "deployment & infrastructure":
+        return <Server className="h-4 w-4 text-zinc-500 dark:text-zinc-400" />;
       default:
         return <Layers className="h-4 w-4 text-purple-500" />;
     }
@@ -32,7 +36,7 @@ export function Skills({ categories = skillsData }: SkillsProps) {
             Skills & Competencies
           </h2>
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
-            Core technologies, programming languages, database architectures, and engineering concepts applied in production.
+            Technologies and practices used in application development, support, and teaching.
           </p>
         </div>
 
@@ -60,12 +64,8 @@ export function Skills({ categories = skillsData }: SkillsProps) {
               {/* Skills Badge Chips */}
               <div className="flex flex-wrap gap-2 mt-auto pt-2">
                 {category.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-semibold text-zinc-800 dark:border-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-200 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500" />
-                    <span>{skill}</span>
+                  <div key={skill}>
+                    {category.title === "AI-Assisted Engineering" && (skill === "ChatGPT" || skill === "Codex" || skill === "Antigravity") ? <WorkflowBadge name={skill} /> : category.title === "Deployment & Infrastructure" ? <DeploymentBadge name={skill} /> : <TechBadge name={skill} />}
                   </div>
                 ))}
               </div>
