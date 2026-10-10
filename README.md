@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hi, I'm Alden! 👋
 
-## Getting Started
+### Full-Stack Developer | AI-Assisted Software Engineering
 
-First, run the development server:
+I'm **Alden Derf Fabro**, a Filipino developer and IT professional from **Batanes, Philippines**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I build practical web applications that solve real-world problems. My background spans IT support, application support, hospital information systems, and teaching Information Technology students.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I'm passionate about **full-stack development, software engineering, and AI-augmented development workflows**. I use modern AI coding assistants to accelerate development while continuously improving my understanding of architecture, code quality, testing, and security.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🌐 **Portfolio:** [aldenderf.com](https://aldenderf.com)  
+📍 **Based in:** Batanes, Philippines  
+💼 **Open to:** Remote Full-Stack Developer / Software Engineer opportunities
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+**Languages:** TypeScript, JavaScript, PHP, SQL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Frontend:** React, Next.js, Tailwind CSS, HTML, CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Backend:** Node.js, Express.js, Laravel, REST APIs
 
-## Deploy on Vercel
+**Databases:** PostgreSQL, Supabase, Microsoft SQL Server, MySQL, MongoDB
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Tools:** Git, GitHub, Prisma, Postman, pnpm, Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🤖 AI-Assisted Engineering
+
+I integrate AI into my software development workflow, from planning and implementation to debugging, refactoring, documentation, and testing.
+
+**AI Tools I Use:**
+
+- **OpenAI Codex** — Coding, refactoring, repository exploration, and implementation workflows
+- **ChatGPT** — Technical planning, architecture discussions, debugging, and learning
+- **Google Gemini** — Code generation, technical research, and problem-solving
+- **Antigravity** — AI-powered development and agentic coding workflows
+
+I'm actively exploring **agentic software engineering, vibe engineering, prompt engineering, and context engineering**.
+
+My approach is simple:
+
+**AI accelerates development. Engineering judgment, understanding, and verification remain essential.**
+
+---
+
+## 🚀 Featured Projects
+
+### 🏐 Mahatao Volleyball Association (MVA)
+
+A full-stack volleyball tournament management platform developed for community sports operations in Mahatao, Batanes.
+
+**Features:**
+- Tournament and division management
+- Team registration and player roster management
+- Registration payment tracking
+- Administrative authentication and authorization
+- Audit logging and protected management operations
+
+**Stack:** Next.js, React, TypeScript, Prisma, Supabase PostgreSQL, Tailwind CSS
+
+🔗 [View Repository](https://github.com/AldenDerf/mva)
+
+### 📚 Learn — IT Courseware Platform
+
+A documentation-based learning platform featuring structured programming lessons, guided coding tutorials, and laboratory activities for IT students.
+
+**Features:**
+- Subject and chapter navigation
+- Beginner-friendly programming tutorials
+- Syntax-highlighted code examples
+- Integrated practical activities and submission checklists
+
+**Stack:** Next.js, Nextra, TypeScript, React
+
+🔗 [View Repository](https://github.com/AldenDerf/learn)
+
+### 🏥 Hospital Web Systems
+
+Experience working on internal hospital web applications involving administrative workflows, database integration, and access management.
+
+**Stack:** Laravel, PHP, React, Inertia.js, Microsoft SQL Server
+
+*Private institutional project — source code and sensitive information are not publicly available.*
+
+---
+
+## 🌱 Currently Learning
+
+- Software architecture and system design
+- Automated testing and code quality
+- Docker and CI/CD
+- Cloud deployment
+- Advanced TypeScript and backend development
+- Agentic coding and AI-assisted engineering workflows
+
+---
+
+## 🎯 Career Direction
+
+I'm working toward a full-time career in software engineering, with a focus on building maintainable, secure, and scalable applications.
+
+I'm particularly interested in **remote full-stack development opportunities**, contributing to real products, and collaborating with engineering teams.
+
+---
+
+## 📫 Connect With Me
+
+**Portfolio:** [aldenderf.com](https://aldenderf.com)  
+**GitHub:** [github.com/AldenDerf](https://github.com/AldenDerf)
+
+---
+
+*Building practical solutions, learning continuously, and making AI a useful part of the engineering process.*
